@@ -4,18 +4,15 @@ using System.Text;
 
 namespace News_Management_System
 {
-    class News
+    class News : INews
     {
         public int ID { get; set; }
         public string Title { get; set; }
         public DateTime PublishDate { get; set; }
         public string Author { get; set; }
         public string Content { get; set; }
-        public float AverageRate;
-        public float GetAverageRate()
-        {
-            return AverageRate;
-        }
+        public float AverageRate { get { return GetAverageRate; } }
+        public float GetAverageRate;
         public virtual void Display()
         {
             Console.WriteLine("Title: " + Title);
@@ -38,7 +35,7 @@ namespace News_Management_System
         }
         public void Calculate()
         {
-            AverageRate = (float) (RateList[0] + RateList[1] + RateList[2]) / 3;
+            GetAverageRate = (float) (RateList[0] + RateList[1] + RateList[2]) / 3;
         }
     }
 }
